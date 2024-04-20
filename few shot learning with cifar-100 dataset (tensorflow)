@@ -1,0 +1,31 @@
+import tensorflow as tf
+from tensorflow.keras.datasets import cifar100
+import matplotlib.pyplot as plt
+import random
+
+# Load the CIFAR-100 dataset
+(x_train, y_train), (x_test, y_test) = cifar100.load_data(label_mode='fine')
+
+# Define class labels
+fine_labels = ['apple', 'aquarium_fish', 'baby', 'bear', 'beaver', 'bed', 'bee', 'beetle', 'bicycle', 'bottle',
+              'bowl', 'boy', 'bridge', 'bus', 'butterfly', 'camel', 'can', 'castle', 'caterpillar', 'cattle',
+              'chair', 'chimpanzee', 'clock', 'cloud', 'cockroach', 'couch', 'crab', 'crocodile', 'cup', 'dinosaur',
+              'dolphin', 'elephant', 'flatfish', 'forest', 'fox', 'girl', 'hamster', 'house', 'kangaroo', 'keyboard',
+              'lamp', 'lawn_mower', 'leopard', 'lion', 'lizard', 'lobster', 'man', 'maple_tree', 'motorcycle',
+              'mountain', 'mouse', 'mushroom', 'oak_tree', 'orange', 'orchid', 'otter', 'palm_tree', 'pear',
+              'pickup_truck', 'pine_tree', 'plain', 'plate', 'poppy', 'porcupine', 'possum', 'rabbit', 'raccoon',
+              'ray', 'road', 'rocket', 'rose', 'sea', 'seal', 'shark', 'shrew', 'skunk', 'skyscraper', 'snail',
+              'snake', 'spider', 'squirrel', 'streetcar', 'sunflower', 'sweet_pepper', 'table', 'tank', 'telephone',
+              'television', 'tiger', 'tractor', 'train', 'trout', 'tulip', 'turtle', 'wardrobe', 'whale', 'willow_tree',
+              'wolf', 'woman', 'worm']
+
+# Visualize 100 random images (10 in each row)
+plt.figure(figsize=(15, 15))
+for i in range(100):
+    plt.subplot(10, 10, i + 1)
+    random_index = random.randint(0, len(x_train) - 1)
+    plt.imshow(x_train[random_index])
+    plt.title(fine_labels[y_train[random_index][0]])
+    plt.axis('off')
+
+plt.show()
